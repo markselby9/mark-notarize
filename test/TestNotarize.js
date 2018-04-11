@@ -6,9 +6,8 @@ contract('Notarize', async (accounts) => {
   let addrB;
 
   beforeEach('setup contract for each test', async function () {
-    console.log('beforeEach');
-    addrA = 0x00000000000000000000000000000000000004d2;
-    addrB = 0x00000000000000000000000000000000000010e1;
+    addrA = accounts[0];
+    addrB = accounts[1];
     instance = await Notarize.new(addrA, addrB, 'contract', 30);
   });
 
@@ -19,5 +18,12 @@ contract('Notarize', async (accounts) => {
     assert.isFalse(userA[1]);
     assert.equal(userB[0], addrB);
     assert.isFalse(userB[1]);
-  })
+  });
+
+  it('needs both user to sign the contract', async () => {
+    await instance.sign({from: accounts[0]});
+    assert.isFalse(await instance.isFinished());
+    await instance.sign({from: accounts[1]});
+    assert.isTrue(await instance.isFinished());
+  });
 });
