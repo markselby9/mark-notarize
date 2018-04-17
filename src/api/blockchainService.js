@@ -88,7 +88,7 @@ export const getNotarizeByAddress = (address, successFunc, errorFunc) => {
 
 export const isFinishedInNotarizeInstance = (address, successFunc, errorFunc) => {
   getNotarizeByAddress(address, (instance, account) => {
-    console.log('isFinished');
+    console.log('isFinished', instance);
     instance.isFinished.call().then(response => {
       successFunc(response);
     });
