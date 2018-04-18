@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { addNotarizeInFactoryInstance, getDeployedNotarizesInFactoryInstance,
-  getNotarizeByAddress, isFinishedInNotarizeInstance } from '../api/blockchainService';
+import {
+  addNotarizeInFactoryInstance, getDeployedNotarizesInFactoryInstance,
+  getNotarizeByAddress, isFinishedInNotarizeInstance
+} from '../api/blockchainService';
 
 class ListNotarize extends Component {
   state = {

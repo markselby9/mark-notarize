@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
+
 import Notarize from '../build/contracts/Notarize.json'
 import NotarizeFactory from '../build/contracts/NotarizeFactory.json'
-import ListNotarize from './components/NewNotarize';
+import NotarizeItem from './components/NotarizeItem';
+import Home from './components/Home';
 import { getWeb3Instance } from './api/blockchainService';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import './css/oswald.css'
 import './css/open-sans.css'
@@ -33,13 +36,17 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav className="navbar pure-menu pure-menu-horizontal">
-          <a href="#" className="pure-menu-heading pure-menu-link">Notarize app</a>
-        </nav>
+        <div>
+          Navigation
+        </div>
+        <hr/>
 
-        <main className="container">
-          <ListNotarize notarizeFactoryInstance={this.state.notarizeFactoryInstance}/>
-        </main>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/:id" component={NotarizeItem}/>
+          </Switch>
+        </BrowserRouter>,
       </div>
     );
   }
