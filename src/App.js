@@ -3,14 +3,12 @@ import React, { Component } from 'react'
 import Notarize from '../build/contracts/Notarize.json'
 import NotarizeFactory from '../build/contracts/NotarizeFactory.json'
 import NotarizeItem from './components/NotarizeItem';
+import Navigation from './components/Navigation';
 import Home from './components/Home';
 import { getWeb3Instance } from './api/blockchainService';
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import './css/oswald.css'
-import './css/open-sans.css'
-import './css/pure-min.css'
-import './App.css'
+import './App.scss'
 
 class App extends Component {
   constructor(props) {
@@ -36,9 +34,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div>
-          Navigation
-        </div>
+        <Navigation/>
         <hr/>
 
         <BrowserRouter>
