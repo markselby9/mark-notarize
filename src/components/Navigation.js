@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 class Navigation extends Component {
   state = {
@@ -34,14 +35,14 @@ class Navigation extends Component {
             </div>
             <div id="navbarMenu" className={"navbar-menu " + (this.state.active ? 'is-active': '')}>
               <div className="navbar-end">
-                <a className="navbar-item is-active">
+                <Link to='/' className="navbar-item is-active">
                   Home
-                </a>
+                </Link>
+                <Link to='/query' className="navbar-item">
+                  Query item by address
+                </Link>
                 <a className="navbar-item">
-                  Examples
-                </a>
-                <a className="navbar-item">
-                  Documentation
+                  Help
                 </a>
                 <span className="navbar-item">
               </span>

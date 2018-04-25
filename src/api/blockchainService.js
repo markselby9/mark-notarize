@@ -81,6 +81,9 @@ export const getNotarizeByAddress = (address, successFunc, errorFunc) => {
         if (successFunc) {
           successFunc(deployedNotarizeInstance, accounts[0]);
         }
+        if (error && errorFunc) {
+          errorFunc(error);
+        }
       });
     }
   })
@@ -93,4 +96,26 @@ export const isFinishedInNotarizeInstance = (address, successFunc, errorFunc) =>
       successFunc(response);
     });
   });
-}
+};
+
+export const getPropertiesOfNotarizeInstance = async (address, successFunc, errorFunc) => {
+
+  try {
+    getNotarizeByAddress(address, async (instance, account) => {
+        console.log('getNotarizeByAddress', instance);
+        const isFinished = await instance.isFinished.call();
+        const userA = await instance.userA.call();
+        const userB = await instance.userB.call();
+        const content = await instance.content.call();
+        successFunc({
+          isFinished,
+          userA,
+          userB,
+          content,
+        })
+      }
+    )
+  } catch (e) {
+    errorFunc(e);
+  }
+};

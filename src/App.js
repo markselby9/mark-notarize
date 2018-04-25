@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 import Notarize from '../build/contracts/Notarize.json'
 import NotarizeFactory from '../build/contracts/NotarizeFactory.json'
-import NotarizeItem from './components/NotarizeItem';
+import NewNotarize from './components/NewNotarize';
+import CheckNotarize from './components/CheckNotarize';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 import { getWeb3Instance } from './api/blockchainService';
@@ -33,17 +34,20 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Navigation/>
-        <hr/>
+      <BrowserRouter>
+        <div className="App">
 
-        <BrowserRouter>
+          <Navigation/>
+          <hr/>
+
           <Switch>
             <Route exact path="/" component={Home}/>
-            <Route path="/:id" component={NotarizeItem}/>
+            <Route exact path="/create" component={NewNotarize}/>
+            <Route exact path="/query" component={CheckNotarize}/>
+            <Route path="/query/:address" component={CheckNotarize}/>
           </Switch>
-        </BrowserRouter>,
-      </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }

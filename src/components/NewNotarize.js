@@ -4,7 +4,7 @@ import {
   getNotarizeByAddress, isFinishedInNotarizeInstance
 } from '../api/blockchainService';
 
-class ListNotarize extends Component {
+class NewNotarize extends Component {
   state = {
     result: null,
   };
@@ -55,31 +55,48 @@ class ListNotarize extends Component {
     const { result } = this.state;
     return (
       <div>
-        <section>
-          <label>
-            usera address: <input type="text" ref={(usera) => this.usera = usera}/>
-          </label><br/>
-          <label>
-            userb address: <input type="text" ref={(userb) => this.userb = userb}/>
-          </label><br/>
-          <label>
-            content: <input type="text" ref={(content) => this.content = content}/>
-          </label><br/>
-          <button onClick={this.handleClickAdd}>add an item</button>
-          <button onClick={this.handleClickGet}>get deployed notarize list</button>
+        <section className="section">
+          <div className="field">
+            <label className="label">Address of user one</label>
+            <div className="control">
+              <input className="input" type="text" placeholder="Blockchain account address"
+                     ref={(usera) => this.usera = usera} />
+            </div>
+            <p className="help">Blockchain account address of user one</p>
+          </div>
+
+          <div className="field">
+            <label className="label">Address of user two</label>
+            <div className="control">
+              <input className="input" type="text" placeholder="Blockchain account address"
+                     ref={(userb) => this.userb = userb} />
+            </div>
+            <p className="help">Blockchain account address of user two</p>
+          </div>
+
+          <div className="field">
+            <label className="label">Content</label>
+            <div className="control">
+              <input className="input" type="text" placeholder="Content you need to keep"
+                     ref={(content) => this.content = content} />
+            </div>
+            <p className="help">Write the content that needs to be notarized</p>
+          </div>
+
+          <a className='button' onClick={this.handleClickAdd}>
+            Add an item
+          </a>
+
+          <a className='button' onClick={this.handleClickGet}>
+            Get current list
+          </a>
         </section>
-        <section>
+        <section className="section">
           result: {result}
-        </section>
-        <section>
-          <label>
-            Item address: <input type="text" ref={(itemAddress) => this.itemAddress = itemAddress}/>
-          </label><br/>
-          <button onClick={this.fetchInstanceOnAddress}>is instance finished?</button>
         </section>
       </div>
     )
   }
 }
 
-export default ListNotarize;
+export default NewNotarize;
