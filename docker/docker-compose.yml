@@ -1,0 +1,15 @@
+version: '3'
+services:
+  ganache:
+    image: trufflesuite/ganache-cli:latest
+    ports:
+      - "8545:8545"
+  node_truffle:
+#    image: node_truffle
+    image: markselby9/node_truffle:latest
+    command: sh
+    stdin_open: true
+    tty: true
+    volumes:
+      - ../:/usr/src/app
+      - /usr/src/app/node_modules

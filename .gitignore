@@ -97,4 +97,4 @@ typings/
 .next
 
 /build/
-/secret.js
+#/secret.js

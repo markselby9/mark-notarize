@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import Notarize from '../build/contracts/Notarize.json'
-import NotarizeFactory from '../build/contracts/NotarizeFactory.json'
 import NewNotarize from './components/NewNotarize';
 import CheckNotarize from './components/CheckNotarize';
 import Navigation from './components/Navigation';
