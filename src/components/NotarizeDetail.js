@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {
-  addNotarizeInFactoryInstance, getDeployedNotarizesInFactoryInstance,
-  getNotarizeByAddress, getPropertiesOfNotarizeInstance, isFinishedInNotarizeInstance
+  isMyAddress, signNotarizeInstance
 } from '../api/blockchainService';
 
 class NotarizeDetail extends Component {
@@ -12,6 +11,7 @@ class NotarizeDetail extends Component {
     userBSigned: false,
     content: '',
     result: null,
+    joined: false,
   };
 
   constructor(props) {
@@ -30,6 +30,15 @@ class NotarizeDetail extends Component {
         userBSigned: userB[1],
         content,
       });
+      const setJoined = () => {
+        this.setState({
+          joined: true,
+        });
+      };
+      isMyAddress(userA[0], setJoined, () => {
+      });
+      isMyAddress(userB[0], setJoined, () => {
+      });
     }
   }
 
@@ -44,7 +53,10 @@ class NotarizeDetail extends Component {
   // }
 
   didClickSignBtn() {
-    console.log('didClickSignBtn');
+    signNotarizeInstance(this.props.address, response => {
+      console.log(response);
+      alert('Successfully signed!')
+    });
   }
 
   render() {
@@ -54,6 +66,7 @@ class NotarizeDetail extends Component {
       userBAddr,
       userBSigned,
       content,
+      joined,
     } = this.state;
     return (
       <div>
@@ -109,11 +122,17 @@ class NotarizeDetail extends Component {
             <p className="help">Write the content that needs to be notarized</p>
           </div>
 
-          <div className="field is-grouped">
-            <div className="control">
-              <button className="button is-link" onClick={this.didClickSignBtn}>Sign notarize!</button>
-            </div>
-          </div>
+          {
+            joined ? (
+              <div className="field is-grouped">
+                <div className="control">
+                  <button className="button is-link" onClick={this.didClickSignBtn}>Sign notarize!</button>
+                </div>
+                <p className="help">You can sign the notarize if you are one of the participants.</p>
+              </div>
+            ) : (<p>You're not a participant!</p>)
+          }
+
         </section>
       </div>
     )

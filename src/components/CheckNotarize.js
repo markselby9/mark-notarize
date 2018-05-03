@@ -48,7 +48,7 @@ class CheckNotarize extends Component {
   }
 
   render() {
-    const { error, result } = this.state;
+    const { error, result, address } = this.state;
     return (
       <div>
         <section className="section">
@@ -76,7 +76,7 @@ class CheckNotarize extends Component {
         }
         {
           result ? (
-            <NotarizeDetail detail={result}/>
+            <NotarizeDetail detail={result} address={address}/>
           ) : (<div/>)
         }
       </div>

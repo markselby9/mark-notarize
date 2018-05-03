@@ -42,6 +42,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route exact path="/create" component={NewNotarize}/>
+            <Route exact path="/query" component={CheckNotarize}/>
             <Route path="/query/:address" component={CheckNotarize}/>
           </Switch>
         </div>
