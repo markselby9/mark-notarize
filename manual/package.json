@@ -1,0 +1,17 @@
+{
+  "name": "manual-compile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Mark Feng",
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "^4.1.0",
+    "solc": "^0.4.19",
+    "truffle-hdwallet-provider": "0.0.3",
+    "web3": "1.0.0-beta.26"
+  }
+}
