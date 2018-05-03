@@ -3,11 +3,14 @@ import {
   addNotarizeInFactoryInstance, getDeployedNotarizesInFactoryInstance,
   getNotarizeByAddress, getPropertiesOfNotarizeInstance, isFinishedInNotarizeInstance
 } from '../api/blockchainService';
+import { Route } from "react-router-dom";
+import NotarizeDetail from "./NotarizeDetail";
 
 class CheckNotarize extends Component {
   state = {
     address: '',
     result: null,
+    error: null,
   };
 
   constructor(props) {
@@ -30,20 +33,22 @@ class CheckNotarize extends Component {
       console.log(properties);
       this.setState({
         result: properties,
+        error: null,
       });
     }, error => {
       this.setState({
-        result: error.toString(),
+        error: error.toString(),
+        result: null,
       })
     });
   }
 
   handleChangeAddress(event) {
-    this.setState({address: event.target.value});
+    this.setState({ address: event.target.value });
   }
 
   render() {
-    const { result } = this.state;
+    const { error, result } = this.state;
     return (
       <div>
         <section className="section">
@@ -53,17 +58,27 @@ class CheckNotarize extends Component {
               <input className="input"
                      type="text"
                      value={this.state.address}
-                     onChange={this.handleChangeAddress} />
+                     onChange={this.handleChangeAddress}/>
             </div>
             <p className="help">The address of deployed notarize item</p>
           </div>
+          {/*<a className="button" onClick={() => this.props.history.push(`/query/${this.state.address}`)}>*/}
           <a className="button" onClick={this.fetchInstanceOnAddress}>
             Get instance!
           </a>
         </section>
-        <section className="section">
-          result: {JSON.stringify(result)}
-        </section>
+        {
+          error ? (
+            <section className="section">
+              error: {JSON.stringify(error)}
+            </section>
+          ) : (<div/>)
+        }
+        {
+          result ? (
+            <NotarizeDetail detail={result}/>
+          ) : (<div/>)
+        }
       </div>
     )
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import NewNotarize from './components/NewNotarize';
+import NotarizeDetail from './components/NotarizeDetail';
 import CheckNotarize from './components/CheckNotarize';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
@@ -41,7 +42,6 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route exact path="/create" component={NewNotarize}/>
-            <Route exact path="/query" component={CheckNotarize}/>
             <Route path="/query/:address" component={CheckNotarize}/>
           </Switch>
         </div>
