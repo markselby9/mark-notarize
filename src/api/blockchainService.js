@@ -98,8 +98,18 @@ export const isFinishedInNotarizeInstance = (address, successFunc, errorFunc) =>
   });
 };
 
-export const getPropertiesOfNotarizeInstance = async (address, successFunc, errorFunc) => {
+export const signNotarizeInstance = (address, successFunc, errorFunc) => {
+  getNotarizeByAddress(address, (instance, account) => {
+    console.log('signNotarizeInstance', instance);
+    instance.sign({
+      from: account,
+    }).then(response => {
+      successFunc(response);
+    });
+  });
+};
 
+export const getPropertiesOfNotarizeInstance = async (address, successFunc, errorFunc) => {
   try {
     getNotarizeByAddress(address, async (instance, account) => {
         console.log('getNotarizeByAddress', instance);
@@ -112,9 +122,21 @@ export const getPropertiesOfNotarizeInstance = async (address, successFunc, erro
           userA,
           userB,
           content,
-        })
+        });
       }
     )
+  } catch (e) {
+    errorFunc(e);
+  }
+};
+
+export const isMyAddress = async (address, successFunc, errorFunc) => {
+  try {
+    if (accounts.includes(address)) {
+      successFunc();
+    } else {
+      errorFunc();
+    }
   } catch (e) {
     errorFunc(e);
   }

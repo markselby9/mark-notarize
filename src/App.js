@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import NewNotarize from './components/NewNotarize';
+import NotarizeDetail from './components/NotarizeDetail';
 import CheckNotarize from './components/CheckNotarize';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
