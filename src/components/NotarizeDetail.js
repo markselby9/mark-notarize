@@ -10,6 +10,7 @@ class NotarizeDetail extends Component {
     userBAddr: '',
     userBSigned: false,
     content: '',
+    isFinished: false,
     result: null,
     joined: false,
   };
@@ -21,7 +22,7 @@ class NotarizeDetail extends Component {
 
   componentDidMount() {
     const { detail } = this.props;
-    const { userA, userB, content } = detail;
+    const { userA, userB, content, isFinished } = detail;
     if (userA && userB) {
       this.setState({
         userAAddr: userA[0],
@@ -29,6 +30,7 @@ class NotarizeDetail extends Component {
         userBAddr: userB[0],
         userBSigned: userB[1],
         content,
+        isFinished
       });
       const setJoined = () => {
         this.setState({
@@ -55,7 +57,8 @@ class NotarizeDetail extends Component {
   didClickSignBtn() {
     signNotarizeInstance(this.props.address, response => {
       console.log(response);
-      alert('Successfully signed!')
+      alert('Successfully signed!');
+      
     });
   }
 
@@ -66,6 +69,7 @@ class NotarizeDetail extends Component {
       userBAddr,
       userBSigned,
       content,
+      isFinished,
       joined,
     } = this.state;
     return (
@@ -122,17 +126,19 @@ class NotarizeDetail extends Component {
             <p className="help">Write the content that needs to be notarized</p>
           </div>
 
-          {
-            joined ? (
-              <div className="field is-grouped">
-                <div className="control">
-                  <button className="button is-link" onClick={this.didClickSignBtn}>Sign notarize!</button>
-                </div>
-                <p className="help">You can sign the notarize if you are one of the participants.</p>
-              </div>
-            ) : (<p>You're not a participant!</p>)
-          }
-
+          {isFinished ? <div>Both side has signed the notarize item. It can't be changed for now.</div> :
+            <div>
+              {
+                joined ? (
+                  <div className="field is-grouped">
+                    <div className="control">
+                      <button className="button is-link" onClick={this.didClickSignBtn}>Sign notarize!</button>
+                    </div>
+                    <p className="help">You can sign the notarize if you are one of the participants.</p>
+                  </div>
+                ) : (<p>You're not a participant!</p>)
+              }
+            </div>}
         </section>
       </div>
     )

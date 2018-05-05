@@ -24,7 +24,7 @@ class Navigation extends Component {
           <div className="container">
             <div className="navbar-brand">
               <a className="navbar-item" href="../">
-                <img src="http://bulma.io/images/bulma-type-white.png" alt="Logo"/>
+                Logo
               </a>
               <span className={"navbar-burger burger " + (this.state.active ? 'is-active' : '')} data-target="navbarMenu"
                     onClick={this.clickMenuBurger}>
@@ -37,6 +37,9 @@ class Navigation extends Component {
               <div className="navbar-end">
                 <Link to='/' className="navbar-item is-active">
                   Home
+                </Link>
+                <Link to='/create' className="navbar-item">
+                  Create
                 </Link>
                 <Link to='/query' className="navbar-item">
                   Query item by address

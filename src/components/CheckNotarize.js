@@ -25,6 +25,10 @@ class CheckNotarize extends Component {
       this.setState({
         address,
       });
+      setTimeout(() => {
+        // set 2s for web3 to be found
+        this.fetchInstanceOnAddress();
+      }, 2000);
     }
   }
 

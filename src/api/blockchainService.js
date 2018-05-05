@@ -122,7 +122,7 @@ export const getPropertiesOfNotarizeInstance = async (address, successFunc, erro
           userA,
           userB,
           content,
-        })
+        });
       }
     )
   } catch (e) {
