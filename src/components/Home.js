@@ -47,6 +47,14 @@ class Home extends Component {
 
     return (
       <section className="section" ref="homeRef">
+        <article className="message is-warning">
+          <div className="message-header">
+            <p>Warning</p>
+          </div>
+          <div className="message-body">
+            Please make sure you have: 1. Metamask installed, 2. Switched to Rinkeby test network<br/>or you may be unable to use the app!
+          </div>
+        </article>
         {showDeployedList()}
         <Link to="/create" className='button'>
           Create new document to sign

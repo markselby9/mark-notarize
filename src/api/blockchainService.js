@@ -18,7 +18,8 @@ export const getWeb3Instance = (successFunc, errorFunc) => {
         }
       })
       .catch(() => {
-        console.log('Error finding web3.')
+        console.log('Error finding web3.');
+        alert('Error finding web3. Please make sure Metamask is installed.')
       });
   }
 };
