@@ -119,7 +119,8 @@ module.exports = {
           /\.json$/,
           /\.woff$/,
           /\.woff2$/,
-          /\.(ttf|svg|eot)$/
+          /\.(ttf|svg|eot)$/,
+          /.scss$/,
         ],
         loader: 'url',
         query: {
@@ -147,8 +148,12 @@ module.exports = {
       // in the main CSS file.
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'styles?importLoaders=1!postcss')
-        // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
+        loader: 'style!styles?importLoaders=1!postcss'
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"],
+        exclude: /node_modules(?!\/react-conventions)/
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
