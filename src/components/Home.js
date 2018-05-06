@@ -33,6 +33,7 @@ class Home extends Component {
       if (deployedList && deployedList.length > 0) {
         return (
           <section className='section'>
+            <h1 className='title is-5'>Deployed documents for notarization, by address:</h1>
             { showListDiv }
           </section>
         )
@@ -45,12 +46,12 @@ class Home extends Component {
     };
 
     return (
-      <div ref="homeRef">
+      <section className="section" ref="homeRef">
         {showDeployedList()}
         <Link to="/create" className='button'>
-          Create one
+          Create new document to sign
         </Link>
-      </div>
+      </section>
     )
   }
 }

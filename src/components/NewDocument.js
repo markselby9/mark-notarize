@@ -38,6 +38,7 @@ class NewNotarize extends Component {
       givenContent: this.content.value || 0,
       givenValidDays: 30
     }, (response) => {
+      alert('Add new document successfully!');
       this.setState({
         result: 'added',
       });
@@ -56,6 +57,7 @@ class NewNotarize extends Component {
     return (
       <div>
         <section className="section">
+          <h5 className="title is-5">Create a new document by entering both address and the document content.</h5>
           <div className="field">
             <label className="label">Address of user one</label>
             <div className="control">
@@ -83,12 +85,12 @@ class NewNotarize extends Component {
             <p className="help">Write the content that needs to be notarized</p>
           </div>
 
-          <a className='button' onClick={this.handleClickAdd}>
+          <a className='button is-primary' onClick={this.handleClickAdd}>
             Add an item
           </a>
 
           <a className='button' onClick={this.handleClickGet}>
-            Get current list
+            Get the list of deployed document address
           </a>
         </section>
         <section className="section">

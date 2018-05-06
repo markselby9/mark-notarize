@@ -39,13 +39,13 @@ class Navigation extends Component {
                   Home
                 </Link>
                 <Link to='/create' className="navbar-item">
-                  Create
+                  Create new document
                 </Link>
                 <Link to='/query' className="navbar-item">
                   Query item by address
                 </Link>
-                <a className="navbar-item">
-                  Help
+                <a href='https://github.com/markselby9/mark-notarize' className="navbar-item">
+                  Github
                 </a>
                 <span className="navbar-item">
               </span>

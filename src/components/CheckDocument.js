@@ -4,7 +4,7 @@ import {
   getNotarizeByAddress, getPropertiesOfNotarizeInstance, isFinishedInNotarizeInstance
 } from '../api/blockchainService';
 import { Route } from "react-router-dom";
-import NotarizeDetail from "./NotarizeDetail";
+import NotarizeDetail from "./DocumentDetail";
 
 class CheckNotarize extends Component {
   state = {
@@ -67,8 +67,8 @@ class CheckNotarize extends Component {
             <p className="help">The address of deployed notarize item</p>
           </div>
           {/*<a className="button" onClick={() => this.props.history.push(`/query/${this.state.address}`)}>*/}
-          <a className="button" onClick={this.fetchInstanceOnAddress}>
-            Get instance!
+          <a className="button is-primary" onClick={this.fetchInstanceOnAddress}>
+            Get document detail!
           </a>
         </section>
         {

@@ -123,7 +123,7 @@ class NotarizeDetail extends Component {
                      name="content"
                      disabled/>
             </div>
-            <p className="help">Write the content that needs to be notarized</p>
+            <p className="help">Write the content of document that needs to be notarized</p>
           </div>
 
           {isFinished ? <div>Both side has signed the notarize item. It can't be changed for now.</div> :
@@ -134,10 +134,11 @@ class NotarizeDetail extends Component {
                     <div className="control">
                       <button className="button is-link" onClick={this.didClickSignBtn}>Sign notarize!</button>
                     </div>
-                    <p className="help">You can sign the notarize if you are one of the participants.</p>
                   </div>
                 ) : (<p>You're not a participant!</p>)
               }
+
+              <p className="help">You can sign the notarize if you are one of the participants.</p>
             </div>}
         </section>
       </div>

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 
-import NewNotarize from './components/NewNotarize';
-import NotarizeDetail from './components/NotarizeDetail';
-import CheckNotarize from './components/CheckNotarize';
+import NewNotarize from './components/NewDocument';
+import CheckNotarize from './components/CheckDocument';
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 import { getWeb3Instance } from './api/blockchainService';
@@ -39,12 +38,26 @@ class App extends Component {
           <Navigation/>
           <hr/>
 
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/create" component={NewNotarize}/>
-            <Route exact path="/query" component={CheckNotarize}/>
-            <Route path="/query/:address" component={CheckNotarize}/>
-          </Switch>
+          <div className="app-body">
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route exact path="/create" component={NewNotarize}/>
+              <Route exact path="/query" component={CheckNotarize}/>
+              <Route path="/query/:address" component={CheckNotarize}/>
+            </Switch>
+          </div>
+
+          <footer className="footer app-footer">
+            <div className="container">
+              <div className="content has-text-centered">
+                <p>
+                  Version: v0.1.1-alpha<br/>
+                  Please use this app with <a href="https://metamask.io/">metamask</a>, under rinkeby test network.<br/>
+                  Github: https://github.com/markselby9/mark-notarize
+                </p>
+              </div>
+            </div>
+          </footer>
         </div>
       </BrowserRouter>
     );
